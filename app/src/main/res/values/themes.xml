@@ -1,0 +1,32 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.ToDoList" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/primary_color</item>
+        <item name="colorPrimaryDark">@color/primary_color</item>
+        <item name="colorAccent">@color/primary_color</item>
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="textStyleTitle" >
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+    <style name="textStyleSubtitle" >
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/grey</item>
+    </style>
+    <style name="FloattingActionButtonStyle" parent="Widget.Design.FloatingActionButton">
+        <item name="srcCompat">@drawable/ic_baseline_add_24</item>
+        <item name="shapeAppearanceOverlay">@style/FloattingShape</item>
+<!--        <item name="layout_constraintTop_toTopOf">parent</item>-->
+<!--        <item name="layout_constraintBottom_toBottomOf">parent</item>-->
+<!--        <item name="layout_constraintStart_toStartOf">parent</item>-->
+<!--        <item name="layout_constraintEnd_toEndOf">parent</item>-->
+<!--        <item name="layout_constraintHorizontal_bias">0.95</item>-->
+<!--        <item name="layout_constraintVertical_bias">0.95</item>-->
+    </style>
+    
+    <style name="FloattingShape" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerSize">20%</item>
+    </style>
+</resources>
