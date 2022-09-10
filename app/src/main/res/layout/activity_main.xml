@@ -4,16 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
+    tools:context=".view.MainActivity"
+    android:orientation="vertical"
+    android:background="@color/white">
 
     <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragment_container_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
         app:defaultNavHost="true"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        app:navGraph="@navigation/nav_graph"/>
+        app:navGraph="@navigation/nav_graph"
+        android:layout_weight="1"/>
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -22,9 +24,10 @@
     android:layout_height="wrap_content"
     app:layout_constraintBottom_toBottomOf="parent"
     app:menu="@menu/bottom_navigation_menu"
-    android:background="@color/black"
-    app:itemIconTint="@color/white"
-    app:itemTextColor="@color/white"/>
+    android:background="@color/white"
+    app:itemIconTint="@color/bottom_nav_color"
+    app:itemTextColor="@color/bottom_nav_color"
+    android:name="androidx.navigation.fragment.NavHostFragment"/>
 
 
 </LinearLayout>

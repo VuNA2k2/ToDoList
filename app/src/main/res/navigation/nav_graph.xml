@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homePageFragment">
 
+    <fragment
+        android:id="@+id/homePageFragment"
+        android:name="com.gnouh.todolist.view.homepage.HomePageFragment"
+        android:label="HomePageFragment" />
+    <fragment
+        android:id="@+id/accountPageFragment"
+        android:name="com.gnouh.todolist.view.accountpage.AccountPageFragment"
+        android:label="AccountPageFragment" />
+    <fragment
+        android:id="@+id/calendarPageFragment"
+        android:name="com.gnouh.todolist.view.calendarpage.CalendarPageFragment"
+        android:label="CalendarPageFragment" />
+    <fragment
+        android:id="@+id/notifyPageFragment"
+        android:name="com.gnouh.todolist.view.notifypage.NotifyPageFragment"
+        android:label="NotifyPageFragment" />
+    <fragment
+        android:id="@+id/recycleBinPageFragment"
+        android:name="com.gnouh.todolist.view.recyclebinpage.RecycleBinPageFragment"
+        android:label="RecycleBinPageFragment" />
 </navigation>

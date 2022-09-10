@@ -63,7 +63,7 @@
         android:id="@+id/imgEmptyAllTask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_task_empty"
+        android:src="@drawable/task_empty"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
