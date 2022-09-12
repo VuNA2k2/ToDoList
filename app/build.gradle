@@ -5,12 +5,12 @@ plugins {
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.gnouh.todolist"
         minSdk 28
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -51,6 +51,10 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0-alpha02")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.0-alpha02")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.0-alpha02")
+
+    //room
+    implementation("androidx.room:room-runtime:2.4.3")
+    annotationProcessor("androidx.room:room-compiler:2.4.3")
 
     // implement calendar
     implementation('com.github.sundeepk:compact-calendar-view:3.0.0')
