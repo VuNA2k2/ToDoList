@@ -15,4 +15,5 @@
     <color name="title_color">#FF000000</color>
     <color name="subtitle_color">#A3A3A3</color>
     <color name="blue">#000FBF</color>
+    <color name="transparent">#00000000</color>
 </resources>

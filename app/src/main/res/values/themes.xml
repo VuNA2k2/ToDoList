@@ -5,15 +5,23 @@
         <item name="colorPrimary">@color/primary_color</item>
         <item name="colorPrimaryDark">@color/primary_color</item>
         <item name="colorAccent">@color/primary_color</item>
+        <item name="android:fontFamily">@font/quicksand_regular</item>
         <!-- Customize your theme here. -->
+    </style>
+    <style name="CustomThemeDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
     </style>
     <style name="textStyleTitle" >
         <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/title_color</item>
+        <item name="android:fontFamily">@font/quicksand_semi_bold</item>
     </style>
     <style name="textStyleSubtitle" >
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/subtitle_color</item>
+        <item name="android:fontFamily">@font/quicksand_medium</item>
     </style>
     <style name="FloattingActionButtonStyle" parent="Widget.Design.FloatingActionButton">
         <item name="srcCompat">@drawable/ic_baseline_add_24</item>

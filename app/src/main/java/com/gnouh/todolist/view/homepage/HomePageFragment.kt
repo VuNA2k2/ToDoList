@@ -1,15 +1,27 @@
 package com.gnouh.todolist.view.homepage
 
+import android.R
+import android.content.DialogInterface.OnShowListener
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.gnouh.todolist.databinding.BottomSheetAddEditBinding
 import com.gnouh.todolist.databinding.FragmentHomePageBinding
-import com.gnouh.todolist.models.Task
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import java.util.*
+
+
+enum class HandelEvent {
+    ADD,
+    EDIT
+}
 
 class HomePageFragment : Fragment() {
     private lateinit var fragmentHomePageBinding: FragmentHomePageBinding
@@ -36,7 +48,7 @@ class HomePageFragment : Fragment() {
             listAllTask.setHasFixedSize(true)
             listAllTask.adapter = taskAllAdapter
             fabAdd.setOnClickListener {
-                taskViewModel.insert(Task(title = "Hello", deadline = Calendar.getInstance().time.time, description = "Description"))
+                showModalBottomSheet(HandelEvent.ADD)
             }
         }
 
@@ -51,6 +63,14 @@ class HomePageFragment : Fragment() {
         return fragmentHomePageBinding.root
     }
 
+    private fun showModalBottomSheet(handelEvent: HandelEvent) {
+        val bottomSheetAddEditBinding = BottomSheetAddEditBinding.inflate(layoutInflater)
+
+        val bottomSheetDialog = BottomSheetDialog(requireContext())
+        bottomSheetDialog.setContentView(bottomSheetAddEditBinding.root)
+
+        bottomSheetDialog.show()
+    }
 
 
 }
