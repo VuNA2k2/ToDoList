@@ -11,6 +11,7 @@
         <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/drawable/ic_edit.xml" value="0.191" />
         <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/drawable/ic_empty_folder.xml" value="0.1935" />
         <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/drawable/ic_launcher_background.xml" value="0.223" />
+        <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/drawable/ic_restore.xml" value="0.2515" />
         <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/drawable/ic_task_empty.xml" value="0.2495" />
         <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/drawable/search_bar_background.xml" value="0.2495" />
         <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/layout/activity_main.xml" value="0.34601449275362317" />
@@ -22,6 +23,7 @@
         <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/layout/fragment_recycle_bin_page.xml" value="0.3625" />
         <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/layout/task_all_item.xml" value="0.3625" />
         <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/layout/task_by_day_item.xml" value="0.5" />
+        <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/layout/task_deleted_item.xml" value="0.33" />
         <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.24739583333333334" />
       </map>
     </option>

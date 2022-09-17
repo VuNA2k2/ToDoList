@@ -68,14 +68,14 @@ class CalendarPageFragment : Fragment() {
                     Log.e("CALENDAR", "onDayClick: ${dateClicked?.time ?: 0 }", )
                     val nextDay = Date((dateClicked?.time ?: Calendar.getInstance().time.time) + MILLIS_IN_A_DAY)
                     tvDay.text = dateClicked?.let {
+                        currentDay.value = it
                         DATE_FORMAT.format(it)
                     }
-                    currentDay.value = dateClicked!!
                 }
 
                 override fun onMonthScroll(firstDayOfNewMonth: Date?) {
-                    currentDay.value = firstDayOfNewMonth!!
                     tvDay.text = firstDayOfNewMonth?.let {
+                        currentDay.value = it
                         DATE_FORMAT.format(it)
                     }
                     tvSelectMonth.text = firstDayOfNewMonth?.let { monthFormat.format(it) }
@@ -85,9 +85,8 @@ class CalendarPageFragment : Fragment() {
         }
         currentDay.observe(viewLifecycleOwner) {
             Log.e("SELECTDAY", "currentDay observe: ${it.time}", )
-            taskViewModel.getTaskByDay(it).observe(viewLifecycleOwner) { listTask ->
-                Log.e("SELECTDAY", "get task by day in currentDay observe: ${it.time}", )
-                taskAllAdapter.data = listTask
+            taskViewModel.getTaskByDay(it).observe(viewLifecycleOwner) { listTasks ->
+                taskAllAdapter.data = listTasks
                 if (taskAllAdapter.data.isNotEmpty()) {
                     calendarPageBinding.imgEmptyAllTask.visibility = View.INVISIBLE
                 } else {

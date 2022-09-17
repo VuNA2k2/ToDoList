@@ -14,7 +14,7 @@ import com.gnouh.todolist.view.homepage.TaskViewModel
 class RecycleBinPageFragment : Fragment() {
     private lateinit var recycleBinPageBinding: FragmentRecycleBinPageBinding
     private lateinit var taskViewModel: TaskViewModel
-    private lateinit var taskAllAdapter: TaskAllAdapter
+    private lateinit var taskDeletedAdapter: TaskDeletedAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,22 +23,26 @@ class RecycleBinPageFragment : Fragment() {
     ): View? {
         recycleBinPageBinding = FragmentRecycleBinPageBinding.inflate(inflater, container, false)
         taskViewModel = ViewModelProvider(this)[TaskViewModel::class.java]
-        taskAllAdapter = TaskAllAdapter {
-            val task = it
-            task.isDelete = false
-            taskViewModel.update(task)
-        }
+        taskDeletedAdapter = TaskDeletedAdapter(
+            restore = {
+                val task = it
+                task.isDelete = false
+                taskViewModel.update(task)
+            }, delete = {
+                taskViewModel.delete(it)
+            }
+        )
         recycleBinPageBinding.apply {
             val linearLayoutManager = LinearLayoutManager(context)
             linearLayoutManager.reverseLayout = true
             linearLayoutManager.stackFromEnd = true
             listDeletedTask.layoutManager = linearLayoutManager
             listDeletedTask.setHasFixedSize(true)
-            listDeletedTask.adapter = taskAllAdapter
+            listDeletedTask.adapter = taskDeletedAdapter
         }
 
         taskViewModel.getTaskDel().observe(viewLifecycleOwner) {
-            taskAllAdapter.data = it
+            taskDeletedAdapter.data = it
             if (it.isNotEmpty()) {
                 recycleBinPageBinding.imgEmptyAllTask.visibility = View.INVISIBLE
             } else {
