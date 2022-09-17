@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/calendarPageFragment"
+        android:icon="@drawable/ic_calendar"
+        android:title="Lịch Hẹn"
+        android:enabled="true"
+        />
+
+    <item
+        android:id="@+id/recycleBinPageFragment"
+        android:icon="@drawable/ic_recycle_bin"
+        android:title="Thùng Rác"
+        android:enabled="true"
+        />
+
+    <item
+        android:id="@+id/homePageFragment"
+        android:icon="@drawable/ic_task"
+        android:title="Nhiệm Vụ"
+        android:enabled="true"
+        />
+
+    <item
+        android:id="@+id/notifyPageFragment"
+        android:icon="@drawable/ic_notify"
+        android:title="Thông Báo"
+        android:enabled="true"
+        />
+
+    <item
+        android:id="@+id/accountPageFragment"
+        android:icon="@drawable/ic_person"
+        android:title="Tài khoản"
+        android:enabled="true"
+        />
+
+
+</menu>

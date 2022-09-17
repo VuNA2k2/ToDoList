@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 apply plugin: 'kotlin-android'
 
@@ -54,8 +55,11 @@ dependencies {
 
     //room
     implementation("androidx.room:room-runtime:2.4.3")
-    annotationProcessor("androidx.room:room-compiler:2.4.3")
+    kapt "androidx.room:room-compiler:2.4.3"
 
     // implement calendar
     implementation('com.github.sundeepk:compact-calendar-view:3.0.0')
+
+    // swipe to ...
+    implementation('com.daimajia.swipelayout:library:1.2.0@aar')
 }
