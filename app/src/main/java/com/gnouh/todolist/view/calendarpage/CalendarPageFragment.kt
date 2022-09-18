@@ -58,6 +58,15 @@ class CalendarPageFragment : Fragment() {
 
             tvDay.text = DATE_FORMAT.format(currentDay.value!!)
 
+//            taskViewModel.getTaskByDay(currentDay.value!!).observe(viewLifecycleOwner) { listTasks ->
+//                taskAllAdapter.data = listTasks
+//                if (taskAllAdapter.data.isNotEmpty()) {
+//                    calendarPageBinding.imgEmptyAllTask.visibility = View.INVISIBLE
+//                } else {
+//                    calendarPageBinding.imgEmptyAllTask.visibility = View.VISIBLE
+//                }
+//            }
+
 //            fabAdd.setOnClickListener {
 //                taskViewModel.insert(Task(title = "Task from calendar", description = "Description", deadline = currentDay.value!!.time + MILLIS_IN_A_DAY / 2))
 //                Log.e("CLICK", "onCreateView: fab on clicked ${currentDay.value!!.time}", )
@@ -66,9 +75,16 @@ class CalendarPageFragment : Fragment() {
             calendarView.setListener(object : CompactCalendarViewListener {
                 override fun onDayClick(dateClicked: Date?) {
                     Log.e("CALENDAR", "onDayClick: ${dateClicked?.time ?: 0 }", )
-                    val nextDay = Date((dateClicked?.time ?: Calendar.getInstance().time.time) + MILLIS_IN_A_DAY)
                     tvDay.text = dateClicked?.let {
                         currentDay.value = it
+//                        taskViewModel.getTaskByDay(it).observe(viewLifecycleOwner) { listTasks ->
+//                            taskAllAdapter.data = listTasks
+//                            if (taskAllAdapter.data.isNotEmpty()) {
+//                                calendarPageBinding.imgEmptyAllTask.visibility = View.INVISIBLE
+//                            } else {
+//                                calendarPageBinding.imgEmptyAllTask.visibility = View.VISIBLE
+//                            }
+//                        }
                         DATE_FORMAT.format(it)
                     }
                 }
@@ -76,6 +92,14 @@ class CalendarPageFragment : Fragment() {
                 override fun onMonthScroll(firstDayOfNewMonth: Date?) {
                     tvDay.text = firstDayOfNewMonth?.let {
                         currentDay.value = it
+//                        taskViewModel.getTaskByDay(it).observe(viewLifecycleOwner) { listTasks ->
+//                            taskAllAdapter.data = listTasks
+//                            if (taskAllAdapter.data.isNotEmpty()) {
+//                                calendarPageBinding.imgEmptyAllTask.visibility = View.INVISIBLE
+//                            } else {
+//                                calendarPageBinding.imgEmptyAllTask.visibility = View.VISIBLE
+//                            }
+//                        }
                         DATE_FORMAT.format(it)
                     }
                     tvSelectMonth.text = firstDayOfNewMonth?.let { monthFormat.format(it) }

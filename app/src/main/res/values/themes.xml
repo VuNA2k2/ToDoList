@@ -7,6 +7,7 @@
         <item name="colorAccent">@color/primary_color</item>
         <item name="android:fontFamily">@font/quicksand_regular</item>
         <!-- Customize your theme here. -->
+        <item name="bottomSheetDialogTheme">@style/CustomThemeDialog</item>
     </style>
     <style name="CustomThemeDialog" parent="Theme.Design.Light.BottomSheetDialog">
         <item name="android:windowIsFloating">false</item>
