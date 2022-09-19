@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bottom_sheet_background"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvDateTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        style="@style/textStyleTitle"
+        android:text="12:31 17/09/2022"
+        android:paddingTop="4dp"/>
+
+    <ImageView
+        android:id="@+id/btnDateTimePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/ic_calendar_picker"/>
+
+    <ImageView
+        android:id="@+id/btnAttach"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_attach"
+        app:layout_constraintBottom_toBottomOf="@+id/btnDateTimePicker"
+        app:layout_constraintEnd_toStartOf="@id/btnDateTimePicker"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="12dp"/>
+
+    <EditText
+        android:id="@+id/edtTitle"
+        style="@style/textStyleTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:hint="Tiêu đề"
+        android:maxLines="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvDateTime"
+        android:textSize="24sp"/>
+
+    <EditText
+        android:id="@+id/edtDescription"
+        style="@style/textStyleSubtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@color/transparent"
+        android:gravity="top"
+        android:hint="Nội dung ghi chú"
+        android:inputType="textMultiLine"
+        android:lines="10"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtTitle" />
+
+    <ImageView
+        android:id="@+id/btnAddOrEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtDescription"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_add"/>
+
+    <ImageView
+        android:id="@+id/btnPickPrio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/edtDescription"
+        app:layout_constraintStart_toEndOf="@+id/btnAddOrEdit"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_prio"/>
+
+    <ImageView
+        android:id="@+id/btnMore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/edtDescription"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/ic_baseline_more_vert_24"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

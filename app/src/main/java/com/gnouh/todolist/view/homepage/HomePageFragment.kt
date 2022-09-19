@@ -2,13 +2,17 @@ package com.gnouh.todolist.view.homepage
 
 import android.R
 import android.annotation.SuppressLint
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.DialogInterface.OnShowListener
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.DatePicker
 import android.widget.FrameLayout
 import android.widget.TimePicker
 import androidx.core.view.WindowCompat
@@ -86,11 +90,38 @@ class HomePageFragment : Fragment() {
             }
 
             btnDateTimePicker.setOnClickListener {
-//                val picker = TimePicker(requireContext()).
+                TimePickerDialog(
+                    requireContext(),
+                    { _, hourOfDay, minute ->
+                        val datePicker = DatePickerDialog(
+                            requireContext(),
+                            { _, year, month, dayOfMonth ->
+//                                val timePicked = String.format("%02d:%02d", hourOfDay, minute)
+//                                val datePicked =
+//                                    String.format("%02d/%02d/%04d", dayOfMonth, month + 1, year)
+                                selectTime.value = taskViewModel.createDate(hourOfDay, minute, dayOfMonth, month, year)
+                            },
+                            Calendar.getInstance().get(Calendar.YEAR),
+                            Calendar.getInstance().get(Calendar.MONTH),
+                            Calendar.getInstance().get(Calendar.DAY_OF_MONTH)
+                        )
+                        datePicker.datePicker.minDate = Calendar.getInstance().timeInMillis - 1000
+                        datePicker.show()
+                    },
+                    Calendar.getInstance().get(Calendar.HOUR_OF_DAY),
+                    Calendar.getInstance().get(Calendar.MINUTE),
+                    true
+                ).show()
             }
 
             btnAddOrEdit.setOnClickListener {
-                taskViewModel.insert(Task(title = "Task from calendar", description = "Description", deadline = Calendar.getInstance().time.time))
+                taskViewModel.insert(
+                    Task(
+                        title = edtTitle.text.toString(),
+                        description = edtDescription.text.toString(),
+                        deadline = selectTime.value?.time ?: Calendar.getInstance().time.time
+                    )
+                )
                 bottomSheetDialog.dismiss()
             }
         }

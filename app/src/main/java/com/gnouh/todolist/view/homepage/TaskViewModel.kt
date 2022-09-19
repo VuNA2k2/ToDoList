@@ -44,4 +44,13 @@ class TaskViewModel(private val context: Application) : AndroidViewModel(context
 
     fun getTaskDel(): LiveData<List<Task>> = TaskRepository.getInstance(context).getTaskDel()
 
+    fun createDate(hourOfDay: Int, minute: Int, dayOfMonth: Int, month: Int, year: Int): Date {
+        val cal = Calendar.getInstance()
+        cal.set(Calendar.HOUR_OF_DAY, hourOfDay)
+        cal.set(Calendar.MINUTE, minute)
+        cal.set(Calendar.DAY_OF_MONTH, dayOfMonth)
+        cal.set(Calendar.MONTH, month)
+        cal.set(Calendar.YEAR, year)
+        return cal.time
+    }
 }
