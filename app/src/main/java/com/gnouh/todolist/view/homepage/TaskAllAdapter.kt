@@ -12,7 +12,7 @@ import com.gnouh.todolist.databinding.TaskAllItemBinding
 import com.gnouh.todolist.models.Task
 import java.util.*
 
-class TaskAllAdapter(val delete: (Task) -> Unit) : RecyclerView.Adapter<TaskAllAdapter.ViewHolder>() {
+class TaskAllAdapter(val delete: (Task) -> Unit, val update: (Task) -> Unit) : RecyclerView.Adapter<TaskAllAdapter.ViewHolder>() {
 
     var data: List<Task> = listOf()
         get() {
@@ -44,6 +44,9 @@ class TaskAllAdapter(val delete: (Task) -> Unit) : RecyclerView.Adapter<TaskAllA
             tvTime.text = TIME_FORMAT.format(Date(data[position].deadline))
             btnDelete.setOnClickListener {
                 delete(data[position])
+            }
+            itemAll.setOnClickListener {
+                update(data[position])
             }
         }
     }
