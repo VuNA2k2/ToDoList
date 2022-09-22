@@ -61,9 +61,6 @@ class AddOrEditBottomSheetDialogFragment(val task: Task?) : BottomSheetDialogFra
                         val datePicker = DatePickerDialog(
                             requireContext(),
                             { _, year, month, dayOfMonth ->
-//                                val timePicked = String.format("%02d:%02d", hourOfDay, minute)
-//                                val datePicked =
-//                                    String.format("%02d/%02d/%04d", dayOfMonth, month + 1, year)
                                 selectTime.value = taskViewModel.createDate(
                                     hourOfDay,
                                     minute,
@@ -87,15 +84,21 @@ class AddOrEditBottomSheetDialogFragment(val task: Task?) : BottomSheetDialogFra
 
             btnAddOrEdit.setOnClickListener {
                 if (task == null) {
-                    taskViewModel.insert(
-                        Task(
-                            title = edtTitle.text.toString(),
-                            description = edtDescription.text.toString(),
-                            deadline = selectTime.value?.time ?: Calendar.getInstance().time.time
-                        )
+                    val tmpTask = Task(
+                        title = edtTitle.text.toString(),
+                        description = edtDescription.text.toString(),
+                        deadline = selectTime.value?.time ?: Calendar.getInstance().time.time
                     )
+                    taskViewModel.insert(
+                        tmpTask
+                    )
+                    taskViewModel.scheduleNotification(tmpTask)
                 } else {
+                    task.title = edtTitle.text.toString()
+                    task.description = edtDescription.text.toString()
+                    task.deadline = selectTime.value?.time ?: Calendar.getInstance().time.time
                     taskViewModel.update(task)
+                    taskViewModel.scheduleNotification(task)
                 }
                 dialog?.dismiss()
             }

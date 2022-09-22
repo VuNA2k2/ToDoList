@@ -24,11 +24,8 @@ class TaskAllAdapter(val delete: (Task) -> Unit, val update: (Task) -> Unit) : R
             notifyDataSetChanged()
         }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var binding: TaskAllItemBinding
-        init {
-            binding = TaskAllItemBinding.bind(view)
-        }
+    class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
+        var binding: TaskAllItemBinding = TaskAllItemBinding.bind(view)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -45,9 +42,9 @@ class TaskAllAdapter(val delete: (Task) -> Unit, val update: (Task) -> Unit) : R
             btnDelete.setOnClickListener {
                 delete(data[position])
             }
-            itemAll.setOnClickListener {
-                update(data[position])
-            }
+        }
+        holder.view.setOnClickListener {
+            update(data[position])
         }
     }
 

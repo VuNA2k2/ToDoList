@@ -1,12 +1,15 @@
 package com.gnouh.todolist.view.homepage
 
+import android.app.AlarmManager
 import android.app.Application
+import android.app.PendingIntent
 import android.content.Context
+import android.content.Intent
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.gnouh.todolist.constants.DATE_FORMAT
-import com.gnouh.todolist.constants.MILLIS_IN_A_DAY
+import com.gnouh.todolist.broadcast.AlarmBroadcast
+import com.gnouh.todolist.constants.*
 import com.gnouh.todolist.database.TaskRepository
 import com.gnouh.todolist.models.Task
 import kotlinx.coroutines.Dispatchers
@@ -52,5 +55,21 @@ class TaskViewModel(private val context: Application) : AndroidViewModel(context
         cal.set(Calendar.MONTH, month)
         cal.set(Calendar.YEAR, year)
         return cal.time
+    }
+
+    fun scheduleNotification(task: Task) {
+        val intent = Intent(context, AlarmBroadcast::class.java)
+        intent.putExtra(TITLE_EXTRA, task.title)
+        intent.putExtra(NOTIFY_ID, task.id)
+        intent.putExtra(DESCRIPTION_EXTRA, task.description)
+        val pendingIntent = PendingIntent.getBroadcast(
+            context,
+            task.id,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        )
+
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, task.deadline - MILLIS_IN_A_HOUR, pendingIntent)
     }
 }
