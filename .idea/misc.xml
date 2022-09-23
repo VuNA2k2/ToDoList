@@ -5,13 +5,20 @@
       <map>
         <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.223" />
         <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/drawable/bottom_sheet_background.xml" value="0.223" />
+        <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/drawable/ic_add.xml" value="0.178" />
+        <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/drawable/ic_attach.xml" value="0.178" />
         <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/drawable/ic_calendar.xml" value="0.223" />
         <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/drawable/ic_calendar_picker.xml" value="0.19" />
         <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/drawable/ic_delete.xml" value="0.191" />
         <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/drawable/ic_edit.xml" value="0.191" />
         <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/drawable/ic_empty_folder.xml" value="0.1935" />
         <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/drawable/ic_launcher_background.xml" value="0.223" />
+        <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/drawable/ic_notify.xml" value="0.178" />
+        <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/drawable/ic_person.xml" value="0.178" />
+        <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/drawable/ic_prio.xml" value="0.178" />
+        <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/drawable/ic_recycle_bin.xml" value="0.178" />
         <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/drawable/ic_restore.xml" value="0.2515" />
+        <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/drawable/ic_task.xml" value="0.178" />
         <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/drawable/ic_task_empty.xml" value="0.2495" />
         <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/drawable/search_bar_background.xml" value="0.2495" />
         <entry key="..\:/Documents/Project/ToDoList/app/src/main/res/layout/activity_main.xml" value="0.34601449275362317" />

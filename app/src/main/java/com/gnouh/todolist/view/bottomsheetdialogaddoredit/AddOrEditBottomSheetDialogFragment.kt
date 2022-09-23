@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
+import com.gnouh.todolist.R
 import com.gnouh.todolist.constants.DATE_FORMAT
 import com.gnouh.todolist.constants.TIME_FORMAT
 import com.gnouh.todolist.databinding.BottomSheetAddEditBinding
@@ -41,6 +42,7 @@ class AddOrEditBottomSheetDialogFragment(val task: Task?) : BottomSheetDialogFra
             task?.let {
                 edtTitle.setText(it.title)
                 edtDescription.setText(it.description)
+                btnAddOrEdit.setImageResource(R.drawable.ic_save)
             }
             val selectTime = if (task != null) {
                 MutableLiveData(Date(task.deadline))
