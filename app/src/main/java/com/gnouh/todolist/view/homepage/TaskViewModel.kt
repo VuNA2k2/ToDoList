@@ -45,6 +45,8 @@ class TaskViewModel(private val context: Application) : AndroidViewModel(context
         return TaskRepository.getInstance(context).getTaskByDay(currentDay.time, nextDay.time)
     }
 
+    fun getTaskBySearch(search: String): LiveData<List<Task>> = TaskRepository.getInstance(context).getTaskBySearch(search)
+
     fun getTaskDel(): LiveData<List<Task>> = TaskRepository.getInstance(context).getTaskDel()
 
     fun createDate(hourOfDay: Int, minute: Int, dayOfMonth: Int, month: Int, year: Int): Date {

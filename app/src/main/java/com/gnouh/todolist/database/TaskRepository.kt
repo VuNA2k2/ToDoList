@@ -36,4 +36,6 @@ class TaskRepository private constructor(context: Application){
     fun getTaskByDay(currentDay: Long, nextDay: Long): LiveData<List<Task>> = taskDatabase.taskDao().getTaskByDay(currentDay, nextDay)
 
     fun getTaskDel(): LiveData<List<Task>> = taskDatabase.taskDao().getTaskDel()
+
+    fun getTaskBySearch(search: String): LiveData<List<Task>> = taskDatabase.taskDao().getTaskBySearch(search)
 }

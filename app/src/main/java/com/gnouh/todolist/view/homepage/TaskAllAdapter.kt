@@ -42,9 +42,9 @@ class TaskAllAdapter(val delete: (Task) -> Unit, val update: (Task) -> Unit) : R
             btnDelete.setOnClickListener {
                 delete(data[position])
             }
-        }
-        holder.view.setOnClickListener {
-            update(data[position])
+            btnEdit.setOnClickListener {
+                update(data[position])
+            }
         }
     }
 
