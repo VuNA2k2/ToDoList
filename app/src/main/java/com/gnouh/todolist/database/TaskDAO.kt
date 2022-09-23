@@ -24,6 +24,7 @@ interface TaskDAO {
 
     @Query("SELECT * FROM TASK_TABLE WHERE DEL = 1")
     fun getTaskDel(): LiveData<List<Task>>
-    @Query("SELECT * FROM TASK_TABLE WHERE NAME LIKE :search OR DESCRIPTION LIKE :search AND DEL = 0")
+
+    @Query("SELECT * FROM TASK_TABLE WHERE DEL = 0 AND (NAME LIKE :search OR DESCRIPTION LIKE :search)")
     fun getTaskBySearch(search: String): LiveData<List<Task>>
 }

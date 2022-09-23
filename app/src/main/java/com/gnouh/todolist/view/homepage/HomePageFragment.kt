@@ -58,6 +58,7 @@ class HomePageFragment : Fragment() {
             listAllTask.setHasFixedSize(true)
             listAllTask.adapter = taskAllAdapter
             fabAdd.setOnClickListener {
+                edtSearch.text.clear()
                 showModalBottomSheet(handleEvent = HandleEvent.ADD)
             }
             edtSearch.doAfterTextChanged {
