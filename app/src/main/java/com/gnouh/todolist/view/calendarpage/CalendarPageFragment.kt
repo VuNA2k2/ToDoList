@@ -43,10 +43,15 @@ class CalendarPageFragment : Fragment() {
     ): View? {
         taskViewModel = ViewModelProvider(this)[TaskViewModel::class.java]
 
-        taskAllAdapter = CalendarTaskAdapter() {it , check ->
+        taskAllAdapter = CalendarTaskAdapter() { it, _ ->
             val task: Task = it
             task.isComplete = !task.isComplete
             taskViewModel.update(task)
+            if (task.isComplete) {
+                taskViewModel.cancelNotification(it)
+            } else {
+                taskViewModel.scheduleNotification(it)
+            }
         }
 
 

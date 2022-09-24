@@ -74,4 +74,19 @@ class TaskViewModel(private val context: Application) : AndroidViewModel(context
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, task.deadline - MILLIS_IN_A_HOUR, pendingIntent)
     }
+
+    fun cancelNotification(task: Task) {
+        val intent = Intent(context, AlarmBroadcast::class.java)
+        intent.putExtra(TITLE_EXTRA, task.title)
+        intent.putExtra(NOTIFY_ID, task.id)
+        intent.putExtra(DESCRIPTION_EXTRA, task.description)
+        val pendingIntent = PendingIntent.getBroadcast(
+            context,
+            task.id,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT
+        )
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager.cancel(pendingIntent)
+    }
 }
