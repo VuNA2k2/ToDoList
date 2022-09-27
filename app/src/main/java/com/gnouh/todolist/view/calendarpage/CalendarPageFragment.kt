@@ -14,7 +14,6 @@ import com.github.sundeepk.compactcalendarview.CompactCalendarView.CompactCalend
 import com.gnouh.todolist.constants.DATE_FORMAT
 import com.gnouh.todolist.databinding.FragmentCalendarPageBinding
 import com.gnouh.todolist.models.Task
-import com.gnouh.todolist.view.homepage.CalendarPageViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
