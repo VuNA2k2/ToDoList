@@ -44,6 +44,7 @@ class HomePageFragment : Fragment() {
                 val task = it
                 task.isDelete = true
                 taskViewModel.update(task)
+                taskViewModel.cancelNotification(task)
             },
             update = {
                 showModalBottomSheet(handleEvent = HandleEvent.EDIT, task = it)
