@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gnouh.todolist.databinding.FragmentHomePageBinding
@@ -67,24 +68,22 @@ class HomePageFragment : Fragment() {
             }
         }
 
-        searchText.observe(viewLifecycleOwner) { text ->
-            if (text != null && text.isNotEmpty()) {
-                taskViewModel.getTaskBySearch("%$text%").observe(viewLifecycleOwner) { listTask ->
-                    taskAllAdapter.data = listTask
-                }
+        val listTasks = Transformations.switchMap(searchText) {
+            if(it != null && it.isNotEmpty()) {
+                taskViewModel.getTaskBySearch("%$it%")
             } else {
-                taskViewModel.getAllTask().observe(viewLifecycleOwner) { listTask ->
-                    taskAllAdapter.data = listTask
-                    if (listTask.isNotEmpty()) {
-                        fragmentHomePageBinding.imgEmptyAllTask.visibility = View.INVISIBLE
-                    } else {
-                        fragmentHomePageBinding.imgEmptyAllTask.visibility = View.VISIBLE
-                    }
-                }
+                taskViewModel.getAllTask()
             }
         }
 
-
+        listTasks.observe(viewLifecycleOwner) {
+            taskAllAdapter.data = it
+            if (it.isNotEmpty()) {
+                fragmentHomePageBinding.imgEmptyAllTask.visibility = View.INVISIBLE
+            } else {
+                fragmentHomePageBinding.imgEmptyAllTask.visibility = View.VISIBLE
+            }
+        }
     }
 
     @SuppressLint("SetTextI18n")

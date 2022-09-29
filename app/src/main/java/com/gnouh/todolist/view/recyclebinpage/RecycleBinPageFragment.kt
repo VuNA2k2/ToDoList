@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.gnouh.todolist.databinding.FragmentRecycleBinPageBinding
+import java.util.*
 
 class RecycleBinPageFragment : Fragment() {
     private lateinit var recycleBinPageBinding: FragmentRecycleBinPageBinding
@@ -26,7 +27,9 @@ class RecycleBinPageFragment : Fragment() {
                 val task = it
                 task.isDelete = false
                 recycleBinPageViewModel.update(task)
-                recycleBinPageViewModel.scheduleNotification(task)
+                if (Date(task.deadline).after(Calendar.getInstance().time)) {
+                    recycleBinPageViewModel.scheduleNotification(task)
+                }
             }, delete = {
                 recycleBinPageViewModel.delete(it)
             }

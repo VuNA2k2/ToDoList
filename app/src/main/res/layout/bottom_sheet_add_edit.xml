@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -95,5 +96,17 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
         android:src="@drawable/ic_baseline_more_vert_24"/>
+
+    <TextView
+        android:id="@+id/tvTimeUpdate"
+        style="@style/textStyleSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnMore"
+        app:layout_constraintStart_toEndOf="@+id/btnPickPrio"
+        app:layout_constraintTop_toBottomOf="@+id/edtDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

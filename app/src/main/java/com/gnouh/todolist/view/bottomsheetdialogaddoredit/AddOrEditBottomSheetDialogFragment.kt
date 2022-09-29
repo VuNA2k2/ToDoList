@@ -13,24 +13,22 @@ import androidx.lifecycle.ViewModelProvider
 import com.gnouh.todolist.R
 import com.gnouh.todolist.constants.DATE_FORMAT
 import com.gnouh.todolist.constants.TIME_FORMAT
-import com.gnouh.todolist.databinding.BottomSheetAddEditBinding
 import com.gnouh.todolist.models.Task
-import com.gnouh.todolist.view.homepage.TaskViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import java.text.SimpleDateFormat
 import java.util.*
+import com.gnouh.todolist.databinding.BottomSheetAddEditBinding
 
 class AddOrEditBottomSheetDialogFragment(val task: Task?) : BottomSheetDialogFragment() {
 
     private lateinit var bottomSheetAddEditBinding: BottomSheetAddEditBinding
-    private lateinit var taskViewModel: TaskViewModel
+    private lateinit var bottomSheetViewModel: BottomSheetViewModel
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         bottomSheetAddEditBinding = BottomSheetAddEditBinding.inflate(inflater, container, false)
-        taskViewModel = ViewModelProvider(this)[TaskViewModel::class.java]
+        bottomSheetViewModel = ViewModelProvider(this)[BottomSheetViewModel::class.java]
         return bottomSheetAddEditBinding.root
     }
 
@@ -43,6 +41,8 @@ class AddOrEditBottomSheetDialogFragment(val task: Task?) : BottomSheetDialogFra
                 edtTitle.setText(it.title)
                 edtDescription.setText(it.description)
                 btnAddOrEdit.setImageResource(R.drawable.ic_save)
+                tvTimeUpdate.setText(R.string.update_history)
+                tvTimeUpdate.text = "${tvTimeUpdate.text} ${TIME_FORMAT.format(Date(it.timeCreate))} ${DATE_FORMAT.format(Date(it.timeCreate))}"
             }
             val selectTime = if (task != null) {
                 MutableLiveData(Date(task.deadline))
@@ -63,7 +63,7 @@ class AddOrEditBottomSheetDialogFragment(val task: Task?) : BottomSheetDialogFra
                         val datePicker = DatePickerDialog(
                             requireContext(),
                             { _, year, month, dayOfMonth ->
-                                selectTime.value = taskViewModel.createDate(
+                                selectTime.value = bottomSheetViewModel.createDate(
                                     hourOfDay,
                                     minute,
                                     dayOfMonth,
@@ -91,16 +91,17 @@ class AddOrEditBottomSheetDialogFragment(val task: Task?) : BottomSheetDialogFra
                         description = edtDescription.text.toString(),
                         deadline = selectTime.value?.time ?: Calendar.getInstance().time.time
                     )
-                    taskViewModel.insert(
+                    bottomSheetViewModel.insert(
                         tmpTask
                     )
-                    taskViewModel.scheduleNotification(tmpTask)
+                    bottomSheetViewModel.scheduleNotification(tmpTask)
                 } else {
                     task.title = edtTitle.text.toString()
                     task.description = edtDescription.text.toString()
                     task.deadline = selectTime.value?.time ?: Calendar.getInstance().time.time
-                    taskViewModel.update(task)
-                    taskViewModel.scheduleNotification(task)
+                    task.timeCreate = Calendar.getInstance().timeInMillis
+                    bottomSheetViewModel.update(task)
+                    bottomSheetViewModel.scheduleNotification(task)
                 }
                 dialog?.dismiss()
             }

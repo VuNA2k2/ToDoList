@@ -1,6 +1,7 @@
 package com.gnouh.todolist.view.calendarpage
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,6 +20,7 @@ class CalendarTaskAdapter(val change: (Task, Boolean) -> Unit) : RecyclerView.Ad
         }
         @SuppressLint("NotifyDataSetChanged")
         set(value) {
+            Log.i("SELECTDAY", ":hell ")
             field = value
             notifyDataSetChanged()
         }
@@ -40,7 +42,9 @@ class CalendarTaskAdapter(val change: (Task, Boolean) -> Unit) : RecyclerView.Ad
             tvTitle.text = data[position].title
             tvDescription.text = data[position].description
             tvTime.text = TIME_FORMAT.format(Date(data[position].deadline))
+            swOnOff.setOnCheckedChangeListener(null)
             swOnOff.isChecked = !data[position].isComplete
+//            swOnOff.setOnClickListener(null)
             swOnOff.setOnCheckedChangeListener { compoundButton, check ->
                 change(data[position], check)
             }

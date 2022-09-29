@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">To Do List</string>
+    <string name="update_history">Lịch sử chỉnh sửa:</string>
 </resources>
