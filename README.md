@@ -92,4 +92,14 @@ Kotlin, Android studio, Room Database, MVVM, AlarmManager, Live Data, Navigation
 
 ![image](https://user-images.githubusercontent.com/78639062/192490222-be247a65-8d96-4e55-9a2a-797f97974f50.png)
 
+# Kiến thức áp dụng.
+- Live data
+- Room database
+- View model
+- Alarm manager
+- Broadcast receiver
+- Push notification
+- Compact Calendar View
+- MVVM
+
 
