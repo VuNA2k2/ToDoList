@@ -20,6 +20,8 @@ import java.util.*
 
 class CalendarPageViewModel(private val context: Application) : AndroidViewModel(context) {
 
+    fun getAllTask(): LiveData<List<Task>> = TaskRepository.getInstance(context).getAllTask()
+
     fun update(task: Task) {
         viewModelScope.launch(Dispatchers.IO) {
             TaskRepository.getInstance(context).update(task)

@@ -1,6 +1,7 @@
 package com.gnouh.todolist.view.calendarpage
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,6 +14,7 @@ import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.sundeepk.compactcalendarview.CompactCalendarView.CompactCalendarViewListener
+import com.github.sundeepk.compactcalendarview.domain.Event
 import com.gnouh.todolist.constants.DATE_FORMAT
 import com.gnouh.todolist.databinding.FragmentCalendarPageBinding
 import com.gnouh.todolist.models.Task
@@ -48,6 +50,14 @@ class CalendarPageFragment : Fragment() {
                 if (Date(task.deadline).after(Calendar.getInstance().time)) {
                     taskByDayViewModel.scheduleNotification(task)
                 }
+            }
+        }
+
+        taskByDayViewModel.getAllTask().observe(
+            viewLifecycleOwner
+        ) { listTasks ->
+            listTasks.forEach {
+                calendarPageBinding.calendarView.addEvent(Event(Color.CYAN, it.deadline));
             }
         }
 
