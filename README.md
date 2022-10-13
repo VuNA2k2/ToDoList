@@ -1,6 +1,10 @@
 # ToDoList
+<<<<<<< HEAD
 ## Tải app.
 
+=======
+## Tải app
+>>>>>>> 48f92dfbf68e895eaac6962eb8400f948830f239
 - Tải app ở đây [To Do List](https://drive.google.com/file/d/1RNOKPxvw9yIf9oHpaQz_w6MtdFnKzAos/view?usp=sharing)
 ## Ứng dụng To Do List android viết bằng kotlin.
 Kotlin, Android studio, Room Database, MVVM, AlarmManager, Live Data, Navigation Component, Compact CalendarView, SwipeLayout, ...
